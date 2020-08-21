@@ -1,0 +1,31 @@
+﻿<Window x:Class="UnitTestDemo.Views.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:common="clr-namespace:UnitTestDemo.Common"
+        xmlns:local="clr-namespace:UnitTestDemo.Views"
+        mc:Ignorable="d"
+        xmlns:cal="http://www.caliburnproject.org"
+        Title="ShellView" Height="450" Width="800">
+    <!--xmlns:Controls="clr-namespace: UniTest.Controls.TextBoxes;assembly=UniTestControls"-->
+
+    <Window.Resources>
+        <common:IntToStringConverter x:Key="IntConverter"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Height="40" Width="160" Text="Toby" FontFamily="Microsoft Yahei" FontSize="20" />
+        <common:IntPreviewTextBox Grid.Row="1" Grid.Column="0" Height="40" Width="160" Text="{Binding Age, Converter={StaticResource IntConverter}}"/>
+        <Button Height="30" Width="150" Grid.Row="1" Grid.Column="1" Background="LightBlue" cal:Message.Attach="OnCalculate"/>
+        <ContentControl x:Name="CommentVm" Grid.Row="2" Grid.Column="0" Height="100" Width="300"/>
+    </Grid>
+</Window>
